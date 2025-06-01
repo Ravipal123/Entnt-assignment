@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useJobs } from "../../contexts/JobsContext";
 import { useComponents } from "../../contexts/ComponentsContext";
 import { getSession } from "../../utils/localStorageUtils";
@@ -9,7 +9,11 @@ const JobForm = () => {
   const { components } = useComponents();
 
   const user = getSession();
-  const canEdit = user && canEditJobs(user.role);
+  const canEdit = user && canEditJobs(user.role?.toLowerCase?.());
+
+  console.log("Session User:", user);
+  console.log("User Role:", user?.role);
+  console.log("Can Edit Jobs:", canEdit);
 
   const [form, setForm] = useState({
     componentId: "",
@@ -54,29 +58,29 @@ const JobForm = () => {
     });
   };
 
-  if (!canEdit) {
-    return (
-      <div className="p-4 text-red-600 font-semibold">
-        You do not have permission to create maintenance jobs.
-      </div>
-    );
-  }
+//   if (!canEdit) {
+//     return (
+//       <div className="p-4 text-red-600 font-semibold">
+//         You do not have permission to create maintenance jobs.
+//       </div>
+//     );
+//   }
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded space-y-2 max-w-sm mx-auto bg-[#2a2a2a]"
+      className="w-full h-auto rounded-2xl border border-gray-200 space-y-2 mx-auto bg-black p-4"
     >
-      <h2 className="text-lg font-bold">Add Maintenance Job</h2>
+      <h2 className="text-lg font-bold text-white">Add Maintenance Job</h2>
+
       <select
-        id="countries"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         name="componentId"
         value={form.componentId}
         onChange={handleComponentChange}
         required
+        className="bg-black border border-gray-300 text-white text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
       >
-        <option value="">Select Component</option>
+        <option value="" className="bg-black">Select Component</option>
         {components.map((comp) => (
           <option key={comp.id} value={comp.id}>
             {comp.name} ({comp.serialNumber})
@@ -90,7 +94,7 @@ const JobForm = () => {
         placeholder="Job Type (e.g., Inspection)"
         value={form.type}
         onChange={handleChange}
-         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
         required
       />
 
@@ -98,7 +102,7 @@ const JobForm = () => {
         name="priority"
         value={form.priority}
         onChange={handleChange}
-         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
       >
         <option value="High">High</option>
         <option value="Medium">Medium</option>
@@ -111,7 +115,7 @@ const JobForm = () => {
         placeholder="Engineer ID (e.g., 3)"
         value={form.assignedEngineerId}
         onChange={handleChange}
-        className="w-full border p-2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
         required
       />
 
@@ -120,13 +124,13 @@ const JobForm = () => {
         name="scheduledDate"
         value={form.scheduledDate}
         onChange={handleChange}
-        className="w-full border p-2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
         required
       />
 
       <button
         type="submit"
-        className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2  hover:bg-blue-700 hover:scale-105 transition-transform"
+        className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 cursor-pointer hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-transform hover:scale-105"
       >
         Create Job
       </button>
