@@ -42,25 +42,20 @@ src/
 ├── main.jsx           # Vite app bootstrap
 └── index.css          # Tailwind base styles
 
-git clone https://github.com/your-username/Ship_Maintenance_Dashboard-React.git
-cd Ship_Maintenance_Dashboard-React
+## 🚀 Getting Started
 
+1. **Clone the repo**
+
+   ```bash
+   git clone https://github.com/your-username/Ship_Maintenance_Dashboard-React.git
+   cd Ship_Maintenance_Dashboard-React
 npm install
 npm run dev
-The app will be available at:
-👉 http://localhost:5173
-
-🛡️ License
-This project is licensed under the MIT License.
-
-🙌 Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-
+Visit: http://localhost:5173
 ---
 
-Let me know if you want to:
-- Add badges (build, license, etc.)
-- Embed a screenshot or demo GIF
-- Include contributors or a changelog section
+### 🧠 Tips:
+- You can **copy-paste** this markdown directly into your `README.md` file.
+- It’s minimal, yet gives all necessary steps clearly.
 
+Let me know if you want a version for **Yarn** too or for **deployment steps** (like Vercel).
