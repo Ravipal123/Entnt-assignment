@@ -41,3 +41,21 @@ src/
 ├── App.jsx            # Main app entry
 ├── main.jsx           # Vite app bootstrap
 └── index.css          # Tailwind base styles
+
+## 🚀 Getting Started
+
+1. **Clone the repo**
+
+   ```bash
+   git clone https://github.com/your-username/Ship_Maintenance_Dashboard-React.git
+   cd Ship_Maintenance_Dashboard-React
+npm install
+npm run dev
+Visit: http://localhost:5173
+---
+
+### 🧠 Tips:
+- You can **copy-paste** this markdown directly into your `README.md` file.
+- It’s minimal, yet gives all necessary steps clearly.
+
+Let me know if you want a version for **Yarn** too or for **deployment steps** (like Vercel).
