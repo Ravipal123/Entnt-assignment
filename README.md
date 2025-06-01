@@ -3,7 +3,7 @@
 A **React-based dashboard application** for managing ship maintenance tasks, components, and job assignments. This single-page application simulates user authentication, supports dynamic in-app notifications, and stores persistent data using `localStorage`.
 
 ### 🔗 Live Demo
-👉 [View Live App](https://entnt-assignment-git-main-ravipal123s-projects.vercel.app/login)
+👉 [View Live App](https://entnt-assignment-silk.vercel.app/login)
 
 ---
 
